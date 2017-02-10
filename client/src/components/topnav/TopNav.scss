@@ -1,0 +1,29 @@
+@import "~bpk-mixins";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $bpk-spacing-sm $bpk-spacing-sm;
+
+  background-color: $bpk-color-white;
+  box-shadow: 0 0 10px 0 $bpk-color-gray-300;
+}
+
+.logo {
+  @include bpk-logo-inline(inline-blue-800);
+  height: 32px;
+  width: 168px;
+  vertical-align: middle;
+}
+
+.logoText {
+  @include bpk-visually-hidden;
+}
+
+.burger {
+	$image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zd…c2OHpNMCA0NjRoNzY4djk2aC03Njh6TTAgMjI0aDc2OHY5NmgtNzY4eiIvPjwvZz48L3N2Zz4=');
+	background: linear-gradient(transparent,transparent), $image center no-repeat;
+	width: 50px;
+	height: 50px;
+}
