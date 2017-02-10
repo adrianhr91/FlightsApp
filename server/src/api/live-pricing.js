@@ -35,8 +35,8 @@ const livePricing = {
       })
     },
     pollSession: (creds) => {
-      return fetch(pricingUrl + `/${creds.sessionKey}?apiKey=${config.apiKey}`, {
-        method: 'GET',
+      return fetch(pricingUrl + `/${creds.sessionKey}?apiKey=${config.apiKey}&pageIndex=0&pageSize=2`, {
+        method: 'GET'
         // uncomment if you'd like to use a development proxy (e.g. Charles or Fiddler)
         // agent: new HttpProxyAgent({
         //   host: 'localhost',
@@ -159,16 +159,16 @@ function pollError (state, err) {
 const sessionParams = (query) => {
   return querystring.stringify({
     apiKey: config.apiKey,
-    adults: query.adults,
-    cabinclass: query.class,
+    adults: 2, //query.adults,
+    cabinclass: 'Business', //query.class,
     country: 'UK',
     currency: 'GBP',
-    destinationplace: query.toPlace,
-    inbounddate: query.toDate,
+    destinationplace: 'LHR', //query.toPlace,
+    inbounddate: '2017-02-24', //query.toDate,
     locale: 'en-GB',
     locationschema: 'Sky',
-    originplace: query.fromPlace,
-    outbounddate: query.fromDate
+    originplace: 'EDI', //query.fromPlace,
+    outbounddate: '2017-02-17' //query.fromDate
   });
 }
 
