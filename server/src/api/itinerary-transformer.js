@@ -7,7 +7,6 @@ class ItineraryTransformer {
 
 	get itineraries() {
 		var models = [];
-		
 
 		for(const itinerary of this.livePricing.Itineraries) {	
 			var itineraryModel = {};
@@ -25,8 +24,29 @@ class ItineraryTransformer {
 		var legModel = {};
 		legModel.departureTime = leg.Departure;
 		legModel.arrivalTime = leg.Arrival;
+		legModel.duration = leg.Duration;
+		legModel.stopsCount = leg.Stops.length;
+		legModel.originPlaceCode = this._getPlaceCode(leg.OriginStation);
+		legModel.destinationPlaceCode = this._getPlaceCode(leg.DestinationStation);
+		legModel.carrierImageUrl = this._getCarrierImageUrl(leg.Carriers[0]); // for sake of simplicity ignoring Legs with multiple carriers
 
 		return legModel
+	}
+
+	_getCarrierImageUrl(carrierId) {
+		for(const carrier of this.livePricing.Carriers) {
+			if(carrier.Id == carrierId) {
+				return `https://logos.skyscnr.com/images/airlines/favicon/${carrier.Code}.png`;
+			}
+		}
+	}
+
+	_getPlaceCode(placeId) {
+		for(const place of this.livePricing.Places) {
+			if(place.Id == placeId) {
+					return place.Code;
+			}
+		}
 	}
 
 	_getLeg(legId) {
