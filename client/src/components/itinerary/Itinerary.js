@@ -1,10 +1,12 @@
 import React from 'react';
+import Leg from '../leg'
 
 class Itinerary extends React.Component {
   render() {
     return (
       <div>
-        Itinerary
+        <Leg />
+				<Leg />
       </div>
     );
   }
