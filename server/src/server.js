@@ -30,6 +30,9 @@ app.get('/api/search', (req, res) => {
     // check in api docs what client should provide
   })
   .then((results) => {
+		var transformer = new api.ItineraryTransformer(results);
+		var test = transformer.itineraries;
+		results.test = test;
     // TODO - a better format for displaying results to the client
     console.log('TODO: transform results for consumption by client');
     res.json(results);

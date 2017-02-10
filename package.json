@@ -59,7 +59,8 @@
   "scripts": {
     "client": "cd client && node ./scripts/start.js",
     "build": "cd client && node ./scripts/build.js",
-    "server": "cd server && node src/server.js"
+    "server": "cd server && node src/server.js",
+		"serverDebug": "cd server && node --inspect src/server.js"
   },
   "eslintConfig": {
     "extends": "./eslint.js"
