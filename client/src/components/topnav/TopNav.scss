@@ -22,8 +22,8 @@
 }
 
 .burger {
-	$image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zd…c2OHpNMCA0NjRoNzY4djk2aC03Njh6TTAgMjI0aDc2OHY5NmgtNzY4eiIvPjwvZz48L3N2Zz4=');
-	background: linear-gradient(transparent,transparent), $image center no-repeat;
+	background: url('~/images/burger.png') center no-repeat;
 	width: 50px;
 	height: 50px;
+	border: none;
 }
