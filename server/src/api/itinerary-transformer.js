@@ -13,6 +13,7 @@ class ItineraryTransformer {
 			itineraryModel.outboundLeg = this._getLegInfo(itinerary.OutboundLegId);
 			itineraryModel.inboundLeg = this._getLegInfo(itinerary.InboundLegId);
 			itineraryModel.cheapetsPrice = this._getCheapestPrice(itinerary.PricingOptions);
+			itineraryModel.cheapestAgenst = this._getCheapestAgentName(itinerary.PricingOptions);
 			models.push(itineraryModel);
 		}
 
@@ -53,6 +54,16 @@ class ItineraryTransformer {
 		for(const leg of this.livePricing.Legs) {
 			if(leg.Id == legId) {
 				return leg;	
+			}
+		}
+	}
+
+	_getCheapestAgentName(pricingOptions) {
+		const agentId = pricingOptions[0] // assuming they are sorted by Price
+
+		for(const agent of this.livePricing.Agents) {
+			if(agent.Id = agentId) {
+				return agent.Name;
 			}
 		}
 	}
