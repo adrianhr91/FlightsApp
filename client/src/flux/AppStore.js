@@ -1,13 +1,20 @@
-
+import { ActionTypes } from './Actions'
 
 class AppStore {
 	constructor(dispatcher) {
 		this.dispatcher = dispatcher;
-		this.value = null;
+		this._isLoading = false;
+		this._itineraries = [];
 
-		this.dispatcher.register(function(payload) {
-			if (payload.actionType === 'test') {
-				this.value = 'it works!';
+		this.dispatcher.register((payload) => {
+			switch (payload.actionType) {
+				case ActionTypes.LOAD_DATA:
+					this._isLoading = true;
+					break;
+				case ActionTypes.LOADED_DATA:
+					this._isLoading = false;
+					this._itineraries.push(payload.data);
+					break;
 			}
 		});
 	}
