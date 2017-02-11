@@ -3,6 +3,7 @@ import './App.scss';
 
 import TopNav from './components/topnav';
 import Itinerary from './components/itinerary';
+import Loader from './components/loader';
 
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
         // TODO results component
 
 				<Itinerary />
+				<Loader />
       </div>
     );
   }

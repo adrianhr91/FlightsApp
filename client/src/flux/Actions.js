@@ -6,6 +6,14 @@ class ActionTypes {
 	static get LOADED_DATA() {
 		return 'loaded-data';
 	}
+
+	static get LOADING_STATE_CHANGED() {
+		return 'loading-state-changed';
+	}
+
+	static get ITINERARIES_STATE_CHANGED() {
+		return 'itineraries-state-changed';
+	}
 }
 
 class Action {
