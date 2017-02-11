@@ -14,12 +14,8 @@ class ItineraryList extends React.Component {
 
   render() {
 		var itList = this.state.itineraries.map((itinerary, index) => 
-			<li key={index}> <Itinerary /> </li>
+			<li key={index}> <Itinerary model={itinerary} /> </li>
 		);
-
-		if(itList.length == 0) {
-			return null;
-		}
 
     return (
       <ul>{ itList }</ul>
