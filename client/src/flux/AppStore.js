@@ -1,4 +1,4 @@
-import { ActionTypes, Action } from './Actions'
+import { ActionTypes } from './Actions'
 const {EventEmitter} = require('fbemitter');
 
 class AppStore {

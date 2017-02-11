@@ -14,7 +14,7 @@ class Loader extends React.Component {
 	
   render() {
 		if(this.state.isVisible) {
-				return <img src="/images/load.gif" className='loader' />
+				return <img src="/images/load.gif" alt='loading' className='loader' />
 		}
 
 		return null;
