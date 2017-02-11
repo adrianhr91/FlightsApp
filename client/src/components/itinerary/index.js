@@ -1,3 +1,3 @@
-import Itinerary from './Itinerary.js'
+import ItineraryList from './ItineraryList.js'
 
-export default Itinerary
+export default ItineraryList

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 
 import TopNav from './components/topnav';
-import Itinerary from './components/itinerary';
+import ItineraryList from './components/itinerary';
 import Loader from './components/loader';
 
 
@@ -15,7 +15,7 @@ class App extends Component {
         // TODO placeholder controls
         // TODO results component
 
-				<Itinerary />
+				<ItineraryList />
 				<Loader />
       </div>
     );
