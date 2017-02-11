@@ -39,7 +39,7 @@ class Leg extends React.Component {
 		var minutes = Math.floor(duration % 60);
 
 		if(minutes < 10) {
-			minutes = '0' + minutes;
+      minutes = '0' + minutes;
 		}
 
 		return minutes;

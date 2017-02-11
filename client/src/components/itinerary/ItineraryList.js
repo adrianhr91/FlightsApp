@@ -14,11 +14,11 @@ class ItineraryList extends React.Component {
 
   render() {
 		var itList = this.state.itineraries.map((itinerary, index) => 
-			<li key={index}> <Itinerary model={itinerary} /> </li>
+			<div key={index}> <Itinerary model={itinerary} /> </div>
 		);
 
     return (
-      <ul>{ itList }</ul>
+      <div className='itineraries'>{ itList }</div>
     );
   }
 }

@@ -1,14 +1,17 @@
 @import "~bpk-stylesheets/base.scss";
 
 .loader {
-	width: 200xp;
+	width: 200px;
 	height: 200px;
+  margin: 0 auto;
+  display: block;
 }
 
 body {
 	background-color: #E5EFF1;
 }
 
-ul, li {
-	list-style: none;
+.itineraries {
+  width: 100%;
+  margin: 0 auto;
 }
