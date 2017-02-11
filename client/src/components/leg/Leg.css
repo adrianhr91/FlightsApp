@@ -6,4 +6,44 @@
 
 .leg {
 	margin-bottom: 10px;
+	display:-moz-box;
+	display:-webkit-box;
+	display:box;
+	-moz-box-orient:horizontal;
+	-webkit-box-orient:horizontal;
+	box-orient:horizontal;
+	width:100%;
+}
+
+.leg-column {
+	 -moz-box-flex:1;
+    -webkit-box-flex:1;
+    box-flex:1;
+}
+
+.leg-column img {
+	align-content: right;
+}
+
+.leg-duration {
+	text-align: right;
+}
+
+.leg-time {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.leg-time span {
+	display: block;
+}
+
+.time {
+	font-weight: bold;
+	font-size: 16pt;
+}
+
+.location {
+	font-size: 16pt;
+	color: #a2a4ac;
 }

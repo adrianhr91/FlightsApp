@@ -9,9 +9,16 @@ class Itinerary extends React.Component {
       <div className='itinerary'>
         <Leg model={ itinerary.outboundLeg } />
 				<Leg model={ itinerary.inboundLeg }  />
-				<span>{ itinerary.cheapetsPrice }</span>
-				<span>{ itinerary.cheapestAgenst }</span>
-				<a className='select-button' href="#">Select</a>
+
+				<div className='booking-info'>
+					<div className='price-info booking-info-column '>
+						<span className='price'>£{ itinerary.cheapetsPrice }</span>
+						<span className='agent'>{ itinerary.cheapestAgenst }</span>
+					</div>
+					<div className='booking-info-column'>
+						<a className='select-button' href="#">Select</a>
+					</div>
+				</div>
       </div>
     );
   }
