@@ -51,6 +51,7 @@
     "bpk-mixins": "^1.2.1",
     "bpk-stylesheets": "0.0.18",
     "es6-promise": "^3.2.1",
+    "flux": "^3.1.2",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.15.0",
     "react": "^15.2.1",
@@ -60,7 +61,7 @@
     "client": "cd client && node ./scripts/start.js",
     "build": "cd client && node ./scripts/build.js",
     "server": "cd server && node src/server.js",
-		"serverDebug": "cd server && node --inspect src/server.js"
+    "serverDebug": "cd server && node --inspect src/server.js"
   },
   "eslintConfig": {
     "extends": "./eslint.js"
