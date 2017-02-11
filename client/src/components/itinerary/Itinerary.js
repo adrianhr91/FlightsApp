@@ -12,7 +12,7 @@ class Itinerary extends React.Component {
 
 				<div className='booking-info'>
 					<div className='price-info booking-info-column '>
-						<span className='price'>£{ itinerary.cheapetsPrice }</span>
+						<span className='price'>£{ Math.floor(itinerary.cheapetsPrice) }</span>
 						<span className='agent'>{ itinerary.cheapestAgenst }</span>
 					</div>
 					<div className='booking-info-column'>

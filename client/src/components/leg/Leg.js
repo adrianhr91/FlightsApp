@@ -8,7 +8,7 @@ class Leg extends React.Component {
 		
     return (
       <div className='leg'>
-				<div className='leg-column'>
+				<div className='leg-column-1'>
         	<img className='carrier-logo' src={ leg.carrierImageUrl } />
 					<div className='leg-time'>
 						<span className='time'>{ moment(leg.departureTime).format('hh:mm') }</span>
@@ -16,20 +16,20 @@ class Leg extends React.Component {
 					</div>
 				</div>
 				
-				<div className='leg-column'>
+				<div className='leg-column-1 arrow'>
 					<img src='images/arrow.png' />
 				</div>
 
-				<div className='leg-column'>
+				<div className='leg-column-1'>
 					<div className='leg-time'>
 						<span className='time'>{ moment(leg.arrivalTimearrivalDate).format('hh:mm') }</span>
 						<span className='location'>{ leg.destinationPlaceCode }</span>
 					</div>
 				</div>
 				
-				<div className='leg-column leg-duration'>
+				<div className='leg-column-2 leg-duration'>
 					<span>{ Math.floor(leg.duration / 60) }h { this.getDurationMinutes(leg.duration)}</span>
-					<span> {leg.stopsCount } stop(s)</span>
+					<span>{ this.getStopsText(leg.stopsCount) }</span>
 				</div>
       </div>
     );
@@ -43,6 +43,24 @@ class Leg extends React.Component {
 		}
 
 		return minutes;
+	}
+
+	getStopsText(stopsCount) {
+		let text;
+
+		switch (stopsCount) {
+			case 0:
+				text = <span className='direct-flight'>Direct</span>
+				break;
+			case 1:
+				text = <span className='non-direct-flight'>1 stop</span>
+				break;
+			default:
+				text = <span className='non-direct-flight'>{stopsCount} stops</span>
+				break;
+		}
+
+		return text;
 	}
 }
 

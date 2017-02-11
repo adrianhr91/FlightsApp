@@ -6,19 +6,17 @@
 
 .leg {
 	margin-bottom: 10px;
-	display:-moz-box;
-	display:-webkit-box;
-	display:box;
-	-moz-box-orient:horizontal;
-	-webkit-box-orient:horizontal;
-	box-orient:horizontal;
+	display:flex;
+	flex-direction: row;
 	width:100%;
 }
 
-.leg-column {
-	 -moz-box-flex:1;
-    -webkit-box-flex:1;
-    box-flex:1;
+.leg-column-1 {
+	 flex-grow: 1;
+}
+
+.leg-column-2 {
+	 flex-grow: 2;
 }
 
 .leg-column img {
@@ -30,11 +28,14 @@
 }
 
 .leg-time {
-	display: inline-block;
 	margin-left: 10px;
 }
 
-.leg-time span {
+.leg-duration, .leg-time {
+	display: inline-block;
+}
+
+.leg-duration span, .leg-time span {
 	display: block;
 }
 
@@ -46,4 +47,16 @@
 .location {
 	font-size: 16pt;
 	color: #a2a4ac;
+}
+
+.direct-flight {
+	color: #00bd68;
+}
+
+.non-direct-flight {
+	color: #ff5452;
+}
+
+.arrow {
+	line-height: 55px;
 }
