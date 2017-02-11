@@ -46,6 +46,9 @@
 
 .location {
 	font-size: 16pt;
+}
+
+.location, .duration {
 	color: #a2a4ac;
 }
 

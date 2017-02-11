@@ -28,7 +28,7 @@ class Leg extends React.Component {
 				</div>
 				
 				<div className='leg-column-2 leg-duration'>
-					<span>{ Math.floor(leg.duration / 60) }h { this.getDurationMinutes(leg.duration)}</span>
+					<span className='duration'>{ Math.floor(leg.duration / 60) }h { this.getDurationMinutes(leg.duration)}</span>
 					<span>{ this.getStopsText(leg.stopsCount) }</span>
 				</div>
       </div>
