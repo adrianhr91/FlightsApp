@@ -8,7 +8,7 @@ const Dispatcher = require('flux').Dispatcher;
 const dispatcher = new Dispatcher();
 appStore.init(dispatcher);
 const actionsCreator = new ActionsCreator(dispatcher);
-actionsCreator.loadData();
+actionsCreator.loadData(appStore.itineraries.length);
 
 ReactDOM.render(
   <App />,

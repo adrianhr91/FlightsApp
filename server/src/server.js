@@ -25,7 +25,8 @@ app.get('/', (req, res) => {
 */
 app.get('/api/search', (req, res) => {
 
-  api.livePricing.search(req.query)
+  var livePricing = new api.LivePricing();
+  livePricing.search(req.query)
   .then((results) => {
 		var transformer = new api.ItineraryTransformer(results);
 		var test = transformer.itineraries;

@@ -30,26 +30,25 @@ class ActionsCreator {
 		this.dispatcher = dispatcher;
 	}
 
-	loadData() {
+	loadData(pageIndex) {
 		// TODO send parameters to server - check out `server/src/api/server.js`
 		this.dispatcher.dispatch(new Action(ActionTypes.LOAD_DATA));
 		console.log('fetching results from server...');
 
     
     
-		fetch('http://localhost:4000/api/search?' + this.getQueryString())
+		fetch('http://localhost:4000/api/search?' + this.getQueryString(pageIndex))
 		.then((response) => {
 			return response.json();
 		})
 		.then((results) => {
-			console.log('TODO: something with these results:');
 			this.dispatcher.dispatch(new Action (ActionTypes.LOADED_DATA, results.test));
 			console.log(results);
 		})
 		.catch(console.error);
 	}
 
-  getQueryString() {
+  getQueryString(pageIndex) {
     var fromDate = new Date();
     fromDate.setDate(fromDate.getDate() + (1 + 7 - fromDate.getDay()) % 7);
     var toDate = new Date(fromDate);
@@ -65,6 +64,8 @@ class ActionsCreator {
       toDate: toDateFormat,
       fromPlace: 'EDI',
       fromDate: fromDateFormat,
+      pageIndex: pageIndex,
+      pageSize: pageIndex + 10
     }
 
     var queryString =
