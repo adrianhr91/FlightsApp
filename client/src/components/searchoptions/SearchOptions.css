@@ -1,4 +1,4 @@
-.search-options {
+.search-summary {
   width: 100%;
   background-color: #008CA8;
   padding: 30px 10px 20px 16px;
@@ -13,7 +13,7 @@
   display: inline-block;
 }
 
-.search-options img {
+.search-summary img {
   padding: 0px 12px 10px 12px;
 }
 
@@ -21,4 +21,25 @@
   color: #b8e6ef;
   font-size: 16pt;
   margin-top: 10px;
+}
+
+.search-options {
+  background-color: white;
+  color: #00b2d6;
+  padding: 20px;
+  font-size: 22pt;
+}
+
+.search-options span {
+  min-width: 80px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.alert-img {
+  margin-right: 12px;
+}
+
+.alert {
+  font-size: 18pt;
 }
