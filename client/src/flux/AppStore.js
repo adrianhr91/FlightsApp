@@ -19,7 +19,7 @@ class AppStore {
 					break;
 				case ActionTypes.LOADED_DATA:
 					this._isLoading = false;
-					this._itineraries = this._itineraries.concat(payload.data);
+					this._itineraries = payload.data;
 					this._emitter.emit(ActionTypes.LOADING_STATE_CHANGED);
 					this._emitter.emit(ActionTypes.ITINERARIES_STATE_CHANGED);
 					break;

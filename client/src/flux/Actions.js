@@ -26,18 +26,22 @@ class Action {
 }
 
 class ActionsCreator {
-	constructor(dispatcher) {
+	init(dispatcher) {
 		this.dispatcher = dispatcher;
 	}
 
-	loadData(pageIndex) {
+  get PAGE_SIZE() {
+    return 10;
+  }
+
+	loadData(currentItinerariesCount) {
 		// TODO send parameters to server - check out `server/src/api/server.js`
 		this.dispatcher.dispatch(new Action(ActionTypes.LOAD_DATA));
 		console.log('fetching results from server...');
 
     
     
-		fetch('http://localhost:4000/api/search?' + this.getQueryString(pageIndex))
+		fetch('http://localhost:4000/api/search?' + this.getQueryString(currentItinerariesCount))
 		.then((response) => {
 			return response.json();
 		})
@@ -48,7 +52,7 @@ class ActionsCreator {
 		.catch(console.error);
 	}
 
-  getQueryString(pageIndex) {
+  getQueryString(currentItinerariesCount) {
     var fromDate = new Date();
     fromDate.setDate(fromDate.getDate() + (1 + 7 - fromDate.getDay()) % 7);
     var toDate = new Date(fromDate);
@@ -64,8 +68,7 @@ class ActionsCreator {
       toDate: toDateFormat,
       fromPlace: 'EDI',
       fromDate: fromDateFormat,
-      pageIndex: pageIndex,
-      pageSize: pageIndex + 10
+      pageSize: currentItinerariesCount + this.PAGE_SIZE
     }
 
     var queryString =
@@ -77,8 +80,10 @@ class ActionsCreator {
   }
 }
 
+const actionsCreator = new ActionsCreator()
+
 export {
 	ActionTypes,
 	Action,
-	ActionsCreator
+	actionsCreator
 }

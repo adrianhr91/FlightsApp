@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import appStore from './flux/AppStore';
-import { ActionsCreator } from './flux/Actions';
+import { actionsCreator } from './flux/Actions';
 const Dispatcher = require('flux').Dispatcher;
 
 const dispatcher = new Dispatcher();
 appStore.init(dispatcher);
-const actionsCreator = new ActionsCreator(dispatcher);
+actionsCreator.init(dispatcher);
 actionsCreator.loadData(appStore.itineraries.length);
 
 ReactDOM.render(
