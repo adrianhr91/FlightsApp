@@ -1,4 +1,5 @@
 import React from 'react';
+import './Loader.css';
 import appStore from '../../flux/AppStore';
 import { ActionTypes, actionsCreator } from '../../flux/Actions';
 
@@ -14,9 +15,9 @@ class Loader extends React.Component {
 	
   render() {
 		if(this.state.isLoading) {
-				return <img src="/images/load.gif" alt='loading' className='loader' />
+				return <img src="/images/load.gif" alt='loading' className='loader-gif' />
 		} else {
-        return <button onClick={this.loadMore}>Load More</button>
+        return <button className='loader-button' onClick={this.loadMore}>Load More</button>
     }
   }
 
