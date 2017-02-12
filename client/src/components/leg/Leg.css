@@ -63,3 +63,7 @@
 .arrow {
 	line-height: 55px;
 }
+
+.day-diff {
+  display: inline !important;
+}

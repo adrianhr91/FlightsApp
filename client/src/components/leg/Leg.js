@@ -11,7 +11,7 @@ class Leg extends React.Component {
         <div className='leg-column-1'>
           <img className='carrier-logo' src={leg.carrierImageUrl} />
           <div className='leg-time'>
-            <span className='time'>{moment(leg.departureTime).format('hh:mm')}</span>
+            <span className='time'>{ moment(new Date(leg.departureTime)).format('HH:mm')}</span>
             <span className='location'>{leg.originPlaceCode}</span>
           </div>
         </div>
@@ -22,7 +22,10 @@ class Leg extends React.Component {
 
         <div className='leg-column-1'>
           <div className='leg-time'>
-            <span className='time'>{moment(leg.arrivalTimearrivalDate).format('hh:mm')}</span>
+            <span className='time'>
+              {moment(new Date(leg.arrivalTime)).format('HH:mm')} 
+              {this.getDayDifference(leg.departureTime, leg.arrivalTime)}
+            </span> 
             <span className='location'>{leg.destinationPlaceCode}</span>
           </div>
         </div>
@@ -33,6 +36,25 @@ class Leg extends React.Component {
         </div>
       </div>
     );
+  }
+
+  getDayDifference(departureTime, arrivalTime) {
+    const daysDiff = this.dateDiffInDays(new Date(departureTime), new Date(arrivalTime)) 
+
+    if(daysDiff > 0) {
+      return <span className='day-diff'>(+{daysDiff})</span>
+    } else {
+      return null;
+    }
+  }
+
+  dateDiffInDays(date1, date2) {
+    var MS_PER_DAY = 1000 * 60 * 60 * 24;
+    // Discard the time and time-zone information.
+    var utc1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
+    var utc2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+
+    return Math.floor((utc2 - utc1) / MS_PER_DAY);
   }
 
   getDurationMinutes(duration) {
