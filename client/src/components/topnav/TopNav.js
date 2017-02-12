@@ -7,7 +7,7 @@ const TopNav = () => (
       <span className='logoText'>Skyscanner</span>
       <span className='logo' />
     </a>
-		<button className='burger' />
+    <button className='burger' />
   </header>
 );
 

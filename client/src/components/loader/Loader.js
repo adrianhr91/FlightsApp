@@ -5,19 +5,19 @@ import { ActionTypes, actionsCreator } from '../../flux/Actions';
 
 class Loader extends React.Component {
 
-	constructor(props) {
-		super(props);
-		this.state = { isLoading: appStore.isLoading };
-		appStore.register(ActionTypes.LOADING_STATE_CHANGED, () => {
-			this.setState({ isLoading: appStore.isLoading });
-		});
-	}
-	
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: appStore.isLoading };
+    appStore.register(ActionTypes.LOADING_STATE_CHANGED, () => {
+      this.setState({ isLoading: appStore.isLoading });
+    });
+  }
+
   render() {
-		if(this.state.isLoading) {
-				return <img src="/images/load.gif" alt='loading' className='loader-gif' />
-		} else {
-        return <button className='loader-button' onClick={this.loadMore}>Load More</button>
+    if (this.state.isLoading) {
+      return <img src="/images/load.gif" alt='loading' className='loader-gif' />
+    } else {
+      return <button className='loader-button' onClick={this.loadMore}>Load More</button>
     }
   }
 

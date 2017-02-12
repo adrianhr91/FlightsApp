@@ -1,4 +1,4 @@
 module.exports = {
   LivePricing: require('./live-pricing'),
-	ItineraryTransformer: require('./itinerary-transformer')
+  ItineraryTransformer: require('./itinerary-transformer')
 };

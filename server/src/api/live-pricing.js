@@ -44,20 +44,20 @@ class LivePricing {
         },
         pollSession: (creds) => {
           return fetch(pricingUrl + `/${creds.sessionKey}?apiKey=${config.apiKey}` +
-           `&pageIndex=0&pageSize=${this.searchParams.pageSize}`, {
-            method: 'GET'
-            // uncomment if you'd like to use a development proxy (e.g. Charles or Fiddler)
-            // agent: new HttpProxyAgent({
-            //   host: 'localhost',
-            //   port: '8888'
-            // })
-          })
+            `&pageIndex=0&pageSize=${this.searchParams.pageSize}`, {
+              method: 'GET'
+              // uncomment if you'd like to use a development proxy (e.g. Charles or Fiddler)
+              // agent: new HttpProxyAgent({
+              //   host: 'localhost',
+              //   port: '8888'
+              // })
+            })
         }
       }
     }
   };
 
-  createSession (params) {
+  createSession(params) {
     console.log('creating session...');
 
     return new Promise((resolve, reject) => {
@@ -69,7 +69,7 @@ class LivePricing {
               .then(console.error);
           } else {
             // session created
-          _.delay(() => {
+            _.delay(() => {
               resolve({
                 location: response.headers.get('location'),
                 response: response.json()
@@ -82,7 +82,7 @@ class LivePricing {
     });
   }
 
-  startPolling (session) {
+  startPolling(session) {
     const location = session.location;
     const sessionKey = location.substring(location.lastIndexOf('/') + 1);
 
@@ -117,7 +117,7 @@ class LivePricing {
     });
   }
 
-  poll (state) {
+  poll(state) {
     if (state.finished) {
       return;
     }
@@ -145,7 +145,7 @@ class LivePricing {
       .catch(state.err);
   }
 
-  pollSuccess (state, data) {
+  pollSuccess(state, data) {
     if (state.finished) {
       return;
     }
@@ -158,8 +158,8 @@ class LivePricing {
   }
 
   // Not implemented: error handling by response code
-  pollError (state, err) {
-    state.tries ++;
+  pollError(state, err) {
+    state.tries++;
     if (!state.timedOut && state.tries < maxRetries) {
       return state.repoll();
     }

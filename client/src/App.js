@@ -11,15 +11,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <TopNav/>
-        <Searchoptions 
-          originPlaceCode='EDI' 
+        <TopNav />
+        <Searchoptions
+          originPlaceCode='EDI'
           destinationPlaceCode='LON'
           travellersCount='2'
           cabinType='Economy' />
 
-				<ItineraryList />
-				<Loader />
+        <ItineraryList />
+        <Loader />
       </div>
     );
   }

@@ -1,55 +1,55 @@
 import moment from 'moment';
 
 class ActionTypes {
-	static get LOAD_DATA() {
-		return 'load-data';
-	}
+  static get LOAD_DATA() {
+    return 'load-data';
+  }
 
-	static get LOADED_DATA() {
-		return 'loaded-data';
-	}
+  static get LOADED_DATA() {
+    return 'loaded-data';
+  }
 
-	static get LOADING_STATE_CHANGED() {
-		return 'loading-state-changed';
-	}
+  static get LOADING_STATE_CHANGED() {
+    return 'loading-state-changed';
+  }
 
-	static get ITINERARIES_STATE_CHANGED() {
-		return 'itineraries-state-changed';
-	}
+  static get ITINERARIES_STATE_CHANGED() {
+    return 'itineraries-state-changed';
+  }
 }
 
 class Action {
-	constructor(actionType, data) {
-		this.actionType = actionType;
-		this.data = data;
-	}
+  constructor(actionType, data) {
+    this.actionType = actionType;
+    this.data = data;
+  }
 }
 
 class ActionsCreator {
-	init(dispatcher) {
-		this.dispatcher = dispatcher;
-	}
+  init(dispatcher) {
+    this.dispatcher = dispatcher;
+  }
 
   get PAGE_SIZE() {
     return 10;
   }
 
-	loadData(currentItinerariesCount) {
-		this.dispatcher.dispatch(new Action(ActionTypes.LOAD_DATA));
-		console.log('fetching results from server...');
+  loadData(currentItinerariesCount) {
+    this.dispatcher.dispatch(new Action(ActionTypes.LOAD_DATA));
+    console.log('fetching results from server...');
 
-    
-    
-		fetch('http://localhost:4000/api/search?' + this.getQueryString(currentItinerariesCount))
-		.then((response) => {
-			return response.json();
-		})
-		.then((results) => {
-			this.dispatcher.dispatch(new Action (ActionTypes.LOADED_DATA, results));
-			console.log(results);
-		})
-		.catch(console.error);
-	}
+
+
+    fetch('http://localhost:4000/api/search?' + this.getQueryString(currentItinerariesCount))
+      .then((response) => {
+        return response.json();
+      })
+      .then((results) => {
+        this.dispatcher.dispatch(new Action(ActionTypes.LOADED_DATA, results));
+        console.log(results);
+      })
+      .catch(console.error);
+  }
 
   getQueryString(currentItinerariesCount) {
     var fromDate = new Date();
@@ -71,7 +71,7 @@ class ActionsCreator {
     }
 
     var queryString =
-      Object.keys(queryParams).map(function(key) {
+      Object.keys(queryParams).map(function (key) {
         return encodeURIComponent(key) + '=' + encodeURIComponent(queryParams[key]);
       }).join('&');
 
@@ -82,7 +82,7 @@ class ActionsCreator {
 const actionsCreator = new ActionsCreator()
 
 export {
-	ActionTypes,
-	Action,
-	actionsCreator
+  ActionTypes,
+  Action,
+  actionsCreator
 }

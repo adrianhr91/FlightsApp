@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 const api = require('./api/');
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
@@ -21,12 +21,12 @@ app.get('/api/search', (req, res) => {
 
   var livePricing = new api.LivePricing(req.query);
   livePricing.search()
-  .then((results) => {
-		var transformer = new api.ItineraryTransformer(results);
-		var itineraries = transformer.itineraries;
-    res.json(itineraries);
-  })
-  .catch(console.error);
+    .then((results) => {
+      var transformer = new api.ItineraryTransformer(results);
+      var itineraries = transformer.itineraries;
+      res.json(itineraries);
+    })
+    .catch(console.error);
 });
 
 app.listen(4000, () => {
