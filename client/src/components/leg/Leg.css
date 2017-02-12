@@ -7,12 +7,12 @@
 .leg {
 	margin-bottom: 10px;
 	display:flex;
-	flex-direction: row;
+  flex-direction: row;
 	width:100%;
 }
 
 .leg-column-1 {
-	 flex-grow: 1;
+  margin-right: 10px;
 }
 
 .leg-column-2 {
@@ -61,9 +61,11 @@
 }
 
 .arrow {
-	line-height: 55px;
+  line-height: 55px;
 }
 
 .day-diff {
   display: inline !important;
+  font-size: 12pt;
+  font-weight: normal;
 }
