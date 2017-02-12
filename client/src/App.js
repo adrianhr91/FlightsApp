@@ -4,6 +4,7 @@ import './App.scss';
 import TopNav from './components/topnav';
 import ItineraryList from './components/itinerary';
 import Loader from './components/loader';
+import Searchoptions from './components/searchoptions/SearchOptions.js'
 
 
 class App extends Component {
@@ -11,9 +12,11 @@ class App extends Component {
     return (
       <div className="App">
         <TopNav/>
-        // TODO header
-        // TODO placeholder controls
-        // TODO results component
+        <Searchoptions 
+          originPlaceCode='EDI' 
+          destinationPlaceCode='LON'
+          travellersCount='2'
+          cabinType='Economy' />
 
 				<ItineraryList />
 				<Loader />
