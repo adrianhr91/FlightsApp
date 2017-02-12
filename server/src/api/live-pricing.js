@@ -19,6 +19,10 @@ let cachedData = {};
 
 class LivePricing {
 
+  constructor(searchParams) {
+    this.searchParams = searchParams;
+  }
+
   get livePricing() {
     return {
       api: {
@@ -39,7 +43,8 @@ class LivePricing {
           })
         },
         pollSession: (creds) => {
-          return fetch(pricingUrl + `/${creds.sessionKey}?apiKey=${config.apiKey}&pageIndex=0&pageSize=10`, {
+          return fetch(pricingUrl + `/${creds.sessionKey}?apiKey=${config.apiKey}` +
+           `&pageIndex=${this.searchParams.pageIndex}&pageSize=${this.searchParams.pageSize}`, {
             method: 'GET'
             // uncomment if you'd like to use a development proxy (e.g. Charles or Fiddler)
             // agent: new HttpProxyAgent({
@@ -177,9 +182,9 @@ class LivePricing {
     });
   }
 
-  search(searchParams) {
+  search() {
     return new Promise((resolve, reject) => {
-      this.createSession(searchParams)
+      this.createSession(this.searchParams)
         .then((session) => {
           return this.startPolling(session)
         })
