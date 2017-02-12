@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 class ActionTypes {
 	static get LOAD_DATA() {
 		return 'load-data';
@@ -33,7 +35,9 @@ class ActionsCreator {
 		this.dispatcher.dispatch(new Action(ActionTypes.LOAD_DATA));
 		console.log('fetching results from server...');
 
-		fetch('http://localhost:4000/api/search')
+    
+    
+		fetch('http://localhost:4000/api/search?' + this.getQueryString())
 		.then((response) => {
 			return response.json();
 		})
@@ -44,6 +48,32 @@ class ActionsCreator {
 		})
 		.catch(console.error);
 	}
+
+  getQueryString() {
+    var fromDate = new Date();
+    fromDate.setDate(fromDate.getDate() + (1 + 7 - fromDate.getDay()) % 7);
+    var toDate = new Date(fromDate);
+    toDate.setHours(24);
+
+    const fromDateFormat = moment(fromDate).format('YYYY-MM-DD');
+    const toDateFormat = moment(toDate).format('YYYY-MM-DD');
+
+    const queryParams = {
+      adults: 2,
+      class: 'Economy',
+      toPlace: 'LHR',
+      toDate: toDateFormat,
+      fromPlace: 'EDI',
+      fromDate: fromDateFormat,
+    }
+
+    var queryString =
+      Object.keys(queryParams).map(function(key) {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(queryParams[key]);
+      }).join('&');
+
+    return queryString;
+  }
 }
 
 export {

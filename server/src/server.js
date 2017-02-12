@@ -25,10 +25,7 @@ app.get('/', (req, res) => {
 */
 app.get('/api/search', (req, res) => {
 
-  api.livePricing.search({
-    // TODO client to provide params
-    // check in api docs what client should provide
-  })
+  api.livePricing.search(req.query)
   .then((results) => {
 		var transformer = new api.ItineraryTransformer(results);
 		var test = transformer.itineraries;
