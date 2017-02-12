@@ -35,7 +35,6 @@ class ActionsCreator {
   }
 
 	loadData(currentItinerariesCount) {
-		// TODO send parameters to server - check out `server/src/api/server.js`
 		this.dispatcher.dispatch(new Action(ActionTypes.LOAD_DATA));
 		console.log('fetching results from server...');
 
@@ -46,7 +45,7 @@ class ActionsCreator {
 			return response.json();
 		})
 		.then((results) => {
-			this.dispatcher.dispatch(new Action (ActionTypes.LOADED_DATA, results.test));
+			this.dispatcher.dispatch(new Action (ActionTypes.LOADED_DATA, results));
 			console.log(results);
 		})
 		.catch(console.error);
